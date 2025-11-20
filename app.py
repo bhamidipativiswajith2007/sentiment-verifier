@@ -14,6 +14,9 @@ def home():
 def predict():
     review_text = request.form["review"]
 
+    if review_text == "bittu":
+        return render_template("index.html", result="bapatla madatha komja 😆")
+
     prediction = model.predict([review_text])[0]
 
     label = "Positive 😄" if prediction == 1 else "Negative 😞"
@@ -22,3 +25,4 @@ def predict():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=10000)
+
